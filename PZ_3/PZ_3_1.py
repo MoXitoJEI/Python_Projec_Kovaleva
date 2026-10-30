@@ -12,7 +12,7 @@ while True:
         B = int(input("Введите B:"))
         break
     except ValueError:
-        print("Ошибка! Введите целое число.")
+        print("Ошибка! Введите целое число")
 
 while True:
     try:
