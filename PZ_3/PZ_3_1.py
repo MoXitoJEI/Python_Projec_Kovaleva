@@ -19,7 +19,7 @@ while True:
         C = int(input("Введите C: "))
         break
     except ValueError:
-        print("Ошибка! Введите целое число.")
+        print("Ошибка! Введите целое число")
 
 count = 0
 
