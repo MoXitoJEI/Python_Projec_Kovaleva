@@ -19,7 +19,7 @@ while True:
         C = int(input("Введите C: "))
         break
     except ValueError:
-        print("Ошибка! Введите целое число.")
+        print("Ошибка! Введите целое число")
 
 if A == B:
     result = 3
