@@ -1,27 +1,35 @@
 # Дан целочисленный список размера N, содержащий ровно два одинаковых элемента.
 # Найти номера одинаковых элементов и вывести эти номера в порядке возрастания.
+import random
 
+# ввод размера списка с проверкой
 while True:
     try:
-        n = int(input("Введите размер списка N: "))
-        if n < 2:
-            raise ValueError
-        a = list(map(int, input("Введите элементы через пробел: ").split()))
-        if len(a) != n:
-            raise ValueError
-
-        # ищем номера (с 1) одинаковых элементов
-        found = []
-        for i in range(n):
-            for j in range(i + 1, n):
-                if a[i] == a[j]:
-                    found.append((i + 1, j + 1))
-
-        # должна быть ровно одна пара одинаковых элементов
-        if len(found) != 1:
-            raise ValueError
-
-        print(found[0][0], found[0][1])  # номера по возрастанию
-        break
+        n = int(input('Введите размер списка N (N >= 2): '))
+        if n >= 2:
+            break
+        print('N должно быть не меньше 2!')
     except ValueError:
-        print("Ошибка: нужен список из N целых чисел с ровно двумя одинаковыми элементами.")
+        print('Ошибка, введите целое число!')
+
+# N - 1 различных чисел, затем добавляем копию одного из них и перемешиваем
+a = random.sample(range(1, 1000), n - 1)
+a.append(random.choice(a))
+random.shuffle(a)
+print('Исходный список:', a)
+
+# поиск номеров (нумерация с 1) одинаковых элементов
+first = 0
+second = 0
+i = 0
+while i < n:
+    j = i + 1
+    while j < n:
+        if a[i] == a[j]:
+            first = i + 1
+            second = j + 1
+        j += 1
+    i += 1
+
+# first всегда меньше second, поэтому порядок возрастания соблюдён
+print('Номера одинаковых элементов:', first, second)

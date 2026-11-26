@@ -1,20 +1,29 @@
 # Дан список A размера N. Вывести его элементы в следующем порядке:
 # A1, A2, AN, AN-1, A3, A4, AN-2, AN-3, ...
+import random
 
+# ввод размера списка с проверкой
 while True:
     try:
-        n = int(input("Введите размер списка N: "))
-        if n <= 0:
-            raise ValueError
-        a = list(map(int, input("Введите элементы через пробел: ").split()))
-        if len(a) != n:
-            raise ValueError
-        break
+        n = int(input('Введите размер списка N: '))
+        if n > 0:
+            break
+        print('N должно быть больше 0!')
     except ValueError:
-        print("Ошибка ввода, попробуйте снова.")
+        print('Ошибка, введите целое число!')
 
+# заполнение списка случайными числами
+a = []
+i = 0
+while i < n:
+    a.append(random.randint(1, 100))
+    i += 1
+print('Исходный список:', a)
+
+# формирование результата: два элемента с начала, два с конца
 result = []
-left, right = 0, n - 1
+left = 0
+right = n - 1
 while left <= right:
     # два элемента с начала: A1, A2, A3, A4, ...
     for _ in range(2):
@@ -27,4 +36,4 @@ while left <= right:
             result.append(a[right])
             right -= 1
 
-print(*result)
+print('Результирующий список:', result)
